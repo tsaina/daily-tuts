@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/4/css/bootstrap.min.css">
+    <title>Date Calculator</title>
+    <style>
+        *{font-size: small;}
+        .radii1{border-radius: 17px 17px 0 0;}
+        .radii2{border-radius: 0 0 17px 17px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5 justify-content-center text-center">
+            <div class="col-auto">
+                <form>
+                    <div class="card text-center shadow bg-dark text-light  radii1" style="width: 35rem;">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label h5">From</label>
+                                <div class="col-auto">
+                                    <input type="date" class="form-control form-control-sm" value="" id="dateFrom">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label h5">To</label>
+                                <div class="col-auto">
+                                    <input type="date" value="" class="form-control form-control-sm" id="dateTo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-1">
+            <div class="col-auto">
+                <div class="card text-center shadow bg-dark text-light radii2" style="width: 35rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Date Difference</h5><hr class="bg-light">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="alert">
+                                        <h5>Years</h5>
+                                        <p id="yearz">0</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="alert">
+                                        <h5>Months</h5>
+                                        <p id="monthz">0</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="alert">
+                                        <h5>Days</h5>
+                                        <p id="dayz">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><hr class="bg-light">
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <div class="alert">
+                                    <h5>From</h5>
+                                    <p id="fullDateFrom">Dec 05,2021</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="alert">
+                                    <h5>To</h5>
+                                    <p id="fullDateTo">Dec 05,2021</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/jquery/3/jquery.min.js"></script>
+    <script src="/popper/2/popper.min.js"></script>
+    <script src="/bootstrap/4/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("change", ChangeHandler);
+
+        function ChangeHandler()
+        {   //var eln = event.target;
+            
+            var curDate = document.getElementById("dateFrom").value; // Get the start date
+            var futDate = document.getElementById("dateTo").value; // Get the end date
+            //
+            var stat = new Date(curDate).getTime();
+            var mwisho = new Date(futDate).getTime();
+            var dateDiff = mwisho - stat;
+            //
+            dateObj = new Date(dateDiff);
+            //alert("New Date"+ dateObj);
+            document.getElementById("yearz").innerHTML = dateObj.getFullYear();            
+            document.getElementById("monthz").innerHTML = dateObj.getMonth();            
+            document.getElementById("dayz").innerHTML = dateObj.getDay();            
+            //
+            document.getElementById("fullDateFrom").innerHTML = curDate;
+            document.getElementById("fullDateTo").innerHTML = futDate;
+        }
+    </script>
+</body>
+</html>
