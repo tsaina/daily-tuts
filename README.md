@@ -1,2 +1,2 @@
-# daily-tuts
+# projects
 
